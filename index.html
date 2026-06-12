@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D Bazaar — Custom 3D Printed Gifts | Tamil Nadu &amp; Karnataka</title>
+<meta name="description" content="Personalized 3D printed gifts — nameplates, cake toppers, LED name lights, keychains and more. Made to order across Tamil Nadu & Karnataka. Order on WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Work+Sans:wght@400;500;600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --cream:#F5EDE2;
+    --cream-deep:#EAD9C4;
+    --terracotta:#B5481E;
+    --terracotta-soft:#D98B5F;
+    --green:#2F5233;
+    --green-soft:#4C7257;
+    --ink:#2B2118;
+    --ink-soft:#7A6A5B;
+    --display:'Poppins', sans-serif;
+    --body:'Work Sans', sans-serif;
+    --hand:'Caveat', cursive;
+    --radius-lg: 28px;
+    --radius-sm: 14px;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    font-family:var(--body);
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+
+  img, svg{ display:block; }
+
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 24px; }
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(245,237,226,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(43,33,24,0.08);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:12px;
+    font-family:var(--display); font-weight:800; font-size:1.25rem;
+    letter-spacing:0.03em;
+    color:var(--terracotta);
+  }
+  .brand-mark{
+    width:42px; height:42px; border-radius:10px;
+    background:var(--terracotta);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--cream); font-family:var(--display); font-weight:800; font-size:1.05rem;
+    transform:rotate(-6deg);
+    flex-shrink:0;
+  }
+  .nav-links{
+    display:flex; align-items:center; gap:28px;
+    font-weight:600; font-size:0.95rem;
+  }
+  .nav-links a{ color:var(--ink); opacity:0.75; transition:opacity .2s; }
+  .nav-links a:hover{ opacity:1; }
+  .nav-cta{
+    background:var(--green); color:var(--cream) !important;
+    padding:10px 20px; border-radius:999px; font-weight:600;
+    opacity:1 !important;
+  }
+  .nav-toggle{ display:none; background:none; border:none; font-size:1.6rem; color:var(--terracotta); cursor:pointer; }
+
+  @media (max-width:760px){
+    .nav-links{
+      position:absolute; top:100%; left:0; right:0;
+      flex-direction:column; align-items:flex-start; gap:16px;
+      background:var(--cream); padding:20px 24px 28px;
+      border-bottom:1px solid rgba(43,33,24,0.08);
+      display:none;
+    }
+    .nav-links.open{ display:flex; }
+    .nav-toggle{ display:block; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:64px 0 80px;
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;
+  }
+  @media (max-width:900px){ .hero{ grid-template-columns:1fr; padding:40px 0 56px; } }
+
+  .eyebrow{
+    font-family:var(--hand); font-size:1.4rem; color:var(--green);
+    margin-bottom:6px; display:block;
+  }
+  h1{
+    font-family:var(--display); font-weight:800; line-height:1.08;
+    font-size:clamp(2.4rem, 5.5vw, 3.6rem);
+    color:var(--ink);
+    margin-bottom:18px;
+  }
+  h1 span{ color:var(--terracotta); }
+  .hero p{
+    font-size:1.08rem; color:var(--ink-soft); max-width:480px; margin-bottom:28px;
+  }
+  .btn-row{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:14px 26px; border-radius:999px; font-weight:600; font-size:0.98rem;
+    transition:transform .15s ease, box-shadow .15s ease;
+    border:2px solid transparent;
+  }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn-primary{ background:var(--green); color:var(--cream); box-shadow:0 6px 18px rgba(47,82,51,0.25); }
+  .btn-outline{ border-color:var(--terracotta); color:var(--terracotta); }
+
+  /* ---------- PRINT BED SIGNATURE CARD ---------- */
+  .printbed{
+    background:var(--terracotta);
+    border-radius:var(--radius-lg);
+    padding:38px 32px;
+    position:relative;
+    transform:rotate(-2.5deg);
+    box-shadow:0 24px 50px -18px rgba(181,72,30,0.55);
+    overflow:hidden;
+  }
+  .printbed::before{
+    content:''; position:absolute; inset:0;
+    background:repeating-linear-gradient(
+      to bottom,
+      rgba(245,237,226,0.07) 0px, rgba(245,237,226,0.07) 2px,
+      transparent 2px, transparent 26px
+    );
+    pointer-events:none;
+  }
+  .printbed-label{
+    font-family:var(--body); font-weight:600; font-size:0.78rem;
+    letter-spacing:0.18em; text-transform:uppercase;
+    color:rgba(245,237,226,0.65); margin-bottom:18px;
+  }
+  .printbed-name{
+    font-family:var(--hand); font-weight:700; color:var(--cream);
+    font-size:clamp(2.6rem, 7vw, 3.6rem);
+    min-height:1.3em;
+    white-space:nowrap; overflow:hidden;
+    border-right:3px solid var(--cream);
+    width:0;
+    animation:typeName 3.4s steps(14, end) infinite;
+  }
+  @keyframes typeName{
+    0%, 4%{ width:0; }
+    45%, 55%{ width:13ch; }
+    96%, 100%{ width:0; }
+  }
+  .printbed-foot{
+    display:flex; justify-content:space-between; align-items:center;
+    margin-top:28px; padding-top:18px;
+    border-top:1px solid rgba(245,237,226,0.18);
+    color:rgba(245,237,226,0.8); font-size:0.85rem; font-weight:600;
+  }
+  .printbed-dot{
+    width:10px; height:10px; border-radius:50%; background:var(--green);
+    display:inline-block; margin-right:8px; box-shadow:0 0 0 4px rgba(47,82,51,0.25);
+  }
+
+  /* ---------- SECTION HEADINGS ---------- */
+  .section{ padding:72px 0; }
+  .section-alt{ background:var(--cream-deep); }
+  .section-head{ text-align:center; max-width:620px; margin:0 auto 48px; }
+  .section-head .eyebrow{ justify-content:center; }
+  .section-head h2{
+    font-family:var(--display); font-weight:800; font-size:clamp(1.8rem,4vw,2.4rem);
+    margin-bottom:10px;
+  }
+  .section-head p{ color:var(--ink-soft); }
+
+  /* ---------- PRODUCT GRID ---------- */
+  .products{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    gap:24px;
+  }
+  .card{
+    background:var(--cream); border:1px solid rgba(43,33,24,0.08);
+    border-radius:var(--radius-lg); padding:28px;
+    display:flex; flex-direction:column; gap:14px;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .card:hover{ transform:translateY(-6px); box-shadow:0 18px 40px -22px rgba(43,33,24,0.35); }
+  .card-icon{
+    width:56px; height:56px; border-radius:14px;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--cream-deep);
+  }
+  .card-icon svg{ width:30px; height:30px; stroke:var(--terracotta); }
+  .card:nth-child(even) .card-icon{ background:rgba(47,82,51,0.1); }
+  .card:nth-child(even) .card-icon svg{ stroke:var(--green); }
+  .card h3{ font-family:var(--display); font-size:1.12rem; font-weight:700; }
+  .card p{ color:var(--ink-soft); font-size:0.94rem; flex-grow:1; }
+  .card-foot{
+    display:flex; align-items:center; justify-content:space-between;
+    margin-top:6px;
+  }
+  .price{ font-family:var(--display); font-weight:700; color:var(--terracotta); }
+  .card-link{
+    font-size:0.85rem; font-weight:600; color:var(--green);
+    display:inline-flex; align-items:center; gap:6px;
+  }
+  .card-link:hover{ text-decoration:underline; }
+
+  /* ---------- PROCESS ---------- */
+  .process{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:28px;
+  }
+  @media (max-width:760px){ .process{ grid-template-columns:1fr; } }
+  .step{
+    background:var(--cream); border-radius:var(--radius-lg);
+    padding:30px; border:1px solid rgba(43,33,24,0.08);
+  }
+  .step-num{
+    font-family:var(--display); font-weight:800; font-size:0.85rem;
+    color:var(--cream); background:var(--terracotta);
+    width:34px; height:34px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:16px;
+  }
+  .step h3{ font-family:var(--display); font-weight:700; font-size:1.08rem; margin-bottom:8px; }
+  .step p{ color:var(--ink-soft); font-size:0.94rem; }
+
+  /* ---------- TRUST STRIP ---------- */
+  .trust{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:14px;
+  }
+  .trust span{
+    background:var(--cream); border:1px solid rgba(43,33,24,0.1);
+    border-radius:999px; padding:10px 20px; font-size:0.88rem; font-weight:600;
+    color:var(--ink-soft);
+  }
+  .trust strong{ color:var(--green); }
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  .contact{
+    background:var(--green); color:var(--cream); border-radius:var(--radius-lg);
+    padding:48px; text-align:center;
+  }
+  .contact h2{ font-family:var(--display); font-weight:800; font-size:clamp(1.7rem,4vw,2.3rem); margin-bottom:12px; }
+  .contact p{ opacity:0.85; max-width:480px; margin:0 auto 26px; }
+  .contact .btn-primary{ background:var(--cream); color:var(--green); box-shadow:none; }
+  .contact .btn-outline{ border-color:var(--cream); color:var(--cream); }
+
+  footer{
+    padding:32px 0; text-align:center; font-size:0.85rem; color:var(--ink-soft);
+  }
+  footer a{ color:var(--terracotta); font-weight:600; }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav wrap">
+    <a href="#top" class="brand">
+      <span class="brand-mark">3D</span>
+      3D Bazaar
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#products">Products</a>
+      <a href="#process">How it Works</a>
+      <a href="#contact">Contact</a>
+      <a class="nav-cta" href="https://wa.me/91XXXXXXXXXX?text=Hi! I'd like to place a custom order." target="_blank" rel="noopener">Order on WhatsApp</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="wrap hero">
+    <div>
+      <span class="eyebrow">Unga Peru, Engal Print</span>
+      <h1>Personalized gifts, <span>printed just for you.</span></h1>
+      <p>From nameplates to cake toppers, LED lights to wedding favours — every piece is custom-made with your name, in your colours, right here in Tamil Nadu &amp; Karnataka.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="https://wa.me/91XXXXXXXXXX?text=Hi! I'd like to place a custom order." target="_blank" rel="noopener">Order on WhatsApp</a>
+        <a class="btn btn-outline" href="#products">View Products</a>
+      </div>
+    </div>
+    <div class="printbed">
+      <div class="printbed-label">Now Printing</div>
+      <div class="printbed-name" id="printName">Priya</div>
+      <div class="printbed-foot">
+        <span><span class="printbed-dot"></span>Layer-by-layer, made for you</span>
+        <span>PETG / PLA</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="section" id="products">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Our Catalog</span>
+        <h2>Ten ways to make it personal</h2>
+        <p>Every item below can carry a name, initials, or a custom message. Tap "Order" to message us directly on WhatsApp.</p>
+      </div>
+
+      <div class="products">
+
+        <!-- 1 -->
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="14" width="36" height="20" rx="3"/><path d="M14 24h6M24 24h10"/></svg>
+          </div>
+          <h3>Personalized Door Nameplate</h3>
+          <p>Family name &amp; house number in a modern font — the first thing your guests notice.</p>
+          <div class="card-foot">
+            <span class="price">From &#8377;499</span>
+            <a class="card-link" href="https://wa.me/91XXXXXXXXXX?text=Hi! I'd like to order a Personalized Door Nameplate." target="_blank" rel="noopener">Order &rarr;</a>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="12" width="32" height="14" rx="2"/><path d="M16 26v8M32 26v8M12 38h24"/></svg>
+          </div>
+          <h3>Custom Desk Nameplate</h3>
+          <p>A neat name plate for your work desk or office — great for personal use or corporate gifting.</p>
+          <div class="card-foot">
+            <span class="price">From &#8377;349</span>
+            <a class="card-link" href="https://wa.me/91XXXXXXXXXX?text=Hi! I'd like to order a Custom Desk Nameplate." target="_blank" rel="noopener">Order &rarr;</a>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 6v10"/><path d="M16 16h16l-2 8H18z"/><circle cx="24" cy="34" r="12"/></svg>
+          </div>
+          <h3>Personalized Cake Topper</h3>
+          <p>Name + age, in a colour and font of your choice. Order 2-3 days ahead for birthdays &amp; anniversaries.</p>
+          <div class="card-foot">
+            <span class="price">From &#8377;249</span>
+            <a class="card-link" href="https://wa.me/91XXXXXXXXXX?text=Hi! I'd like to order a Personalized Cake Topper." target="_blank" rel="noopener">Order &rarr;</a>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="6" width="28" height="28" rx="2"/><path d="M10 34l10-10M38 34l-10-10"/></svg>
+          </div>
+          <h3>Custom Photo Frame Stand</h3>
+          <p>A small stand with a name &amp; date — perfect for anniversaries and baby announcements.</p>
+          <div class="card-foot">
+            <span class="price">From &#8377;399</span>
+            <a class="card-link" href="https://wa.me/91XXXXXXXXXX?text=Hi! I'd like to order a Custom Photo Frame Stand." target="_blank" rel="noopener">Order &rarr;</a>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 40V20a14 14 0 0128 0v20"/><path d="M10 40h28"/><circle cx="24" cy="24" r="3"/></svg>
+          </div>
+          <h3>Personalized Pooja / Idol Stand</h3>
+          <p>A custom-engraved base for your home temple — your family name beneath your favourite idol.</p>
+          <div class="card-foot">
+            <span class="price">From &#8377;349</span>
+            <a class="card-link" href="https://wa.me/91XXXXXXXXXX?text=Hi! I'd like to order a Personalized Pooja Stand." target="_blank" rel="noopener">Order &rarr;</a>
+          </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="14" width="32" height="24" rx="2"/><path d="M8 22h32M24 14v24"/></svg>
+          </div>
+          <h3>Wedding Return-Gift Box</h3>
+          <p>Small trinket boxes with couple initials &amp; date — bulk orders welcome for weddings.</p>
+          <div class="card-foot">
+            <span class="price">From &#8377;99 / pc</span>
+            <a class="card-link" href="https://wa.me/91XXXXXXXXXX?text=Hi! I'd like a quote for Wedding Return-Gift Boxes (bulk)." target="_blank" rel="noopener">Order &rarr;</a>
+          </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="4"/><circle cx="24" cy="10" r="5"/><circle cx="24" cy="38" r="5"/><circle cx="10" cy="24" r="5"/><circle cx="38" cy="24" r="5"/></svg>
+          </div>
+          <h3>Reusable Rangoli / Kolam Stencil</h3>
+          <p>Durable stencils for everyday kolam designs — wash, reuse, and keep your entrance looking sharp.</p>
+          <div class="card-foot">
+            <span class="price">From &#8377;199</span>
+            <a class="card-link" href="https://wa.me/91XXXXXXXXXX?text=Hi! I'd like to order a Rangoli/Kolam Stencil." target="_blank" rel="noopener">Order &rarr;</a>
+          </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="16" width="28" height="16" rx="3"/><path d="M6 14l4 4M42 14l-4 4M6 34l4-4M42 34l-4-4"/></svg>
+          </div>
+          <h3>Personalized LED Name Light</h3>
+          <p>A name that lights up — great for birthdays, room decor, and gifting moments people remember.</p>
+          <div class="card-foot">
+            <span class="price">From &#8377;699</span>
+            <a class="card-link" href="https://wa.me/91XXXXXXXXXX?text=Hi! I'd like to order a Personalized LED Name Light." target="_blank" rel="noopener">Order &rarr;</a>
+          </div>
+        </div>
+
+        <!-- 9 -->
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="24" cy="32" rx="16" ry="6"/><path d="M24 26c0-6 4-8 4-12s-4-6-4-6-4 2-4 6 4 6 4 12z"/></svg>
+          </div>
+          <h3>Pooja Thali / Diya Stand</h3>
+          <p>A sturdy stand for your diyas and thali set, ready for Diwali and every festival in between.</p>
+          <div class="card-foot">
+            <span class="price">From &#8377;299</span>
+            <a class="card-link" href="https://wa.me/91XXXXXXXXXX?text=Hi! I'd like to order a Pooja Thali/Diya Stand." target="_blank" rel="noopener">Order &rarr;</a>
+          </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="6" width="16" height="28" rx="2"/><path d="M16 34l-6 8h28l-6-8"/></svg>
+          </div>
+          <h3>Custom Phone / Tablet Stand</h3>
+          <p>Add your initials to a sturdy stand for your phone or tablet — a small add-on that finishes any gift.</p>
+          <div class="card-foot">
+            <span class="price">From &#8377;199</span>
+            <a class="card-link" href="https://wa.me/91XXXXXXXXXX?text=Hi! I'd like to order a Custom Phone/Tablet Stand." target="_blank" rel="noopener">Order &rarr;</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section section-alt" id="process">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">How it Works</span>
+        <h2>From your message to your doorstep</h2>
+        <p>Three simple steps — no app to download, no account to create.</p>
+      </div>
+      <div class="process">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>Message us your idea</h3>
+          <p>Send the name, text, or design you want on WhatsApp. We'll confirm size, colour, and price within a few hours.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>We design &amp; print</h3>
+          <p>Your piece is custom-designed and 3D printed layer by layer, usually ready within 2-3 days.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>Delivered to you</h3>
+          <p>Pay via UPI or Cash on Delivery. Shipped across Tamil Nadu &amp; Karnataka, packed with care.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="section">
+    <div class="wrap">
+      <div class="trust">
+        <span><strong>100%</strong> Custom-made to order</span>
+        <span><strong>COD &amp; UPI</strong> accepted</span>
+        <span>Ships across <strong>TN &amp; KA</strong></span>
+        <span><strong>2-3 day</strong> turnaround</span>
+        <span>Bulk orders for <strong>weddings &amp; events</strong></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <h2>Got a name in mind? Let's print it.</h2>
+        <p>Message us on WhatsApp with what you're looking for — we'll reply with options, pricing, and a delivery estimate.</p>
+        <div class="btn-row" style="justify-content:center;">
+          <a class="btn btn-primary" href="https://wa.me/91XXXXXXXXXX?text=Hi! I'd like to place a custom order." target="_blank" rel="noopener">Chat on WhatsApp</a>
+          <a class="btn btn-outline" href="https://instagram.com/3dbazaar" target="_blank" rel="noopener">Follow on Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    &copy; <span id="year"></span> 3D Bazaar — Custom 3D Printed Gifts, Tamil Nadu &amp; Karnataka.
+    <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a> ·
+    <a href="https://instagram.com/3dbazaar" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  document.getElementById('navToggle').addEventListener('click', function(){
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Rotating names in the "print bed" hero card
+  const names = ["Priya", "Arjun", "Lakshmi", "Karthik", "Divya", "Suresh"];
+  let i = 0;
+  const nameEl = document.getElementById('printName');
+  setInterval(() => {
+    i = (i + 1) % names.length;
+    nameEl.textContent = names[i];
+    // restart animation
+    nameEl.style.animation = 'none';
+    requestAnimationFrame(() => { nameEl.style.animation = ''; });
+  }, 3400);
+</script>
+
+</body>
+</html>
